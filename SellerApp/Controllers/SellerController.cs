@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Common;
+using DataAccess.DB;
+using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
 
 namespace SellerApp.Controllers
 {
@@ -12,9 +12,11 @@ namespace SellerApp.Controllers
     public class SellerController : ControllerBase
     {
         [HttpGet]
-        public string Get()
+        public JsonResult Get()
         {
-            return "Hello world";
+            DBAccess dBAccess = new DBAccess("Seller");
+            var data = dBAccess.GetAll<Seller>();
+            return new JsonResult(new Response<List<Seller>> { Code = HttpStatusCode.OK,Message = "Success",Data = data });
         }
     }
 }
