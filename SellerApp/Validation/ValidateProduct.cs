@@ -6,16 +6,21 @@ using System.Collections.Generic;
 
 namespace SellerApp
 {
-    public static class ValidateProduct
+    public struct ValidateProduct
     {
         static List<string> Categories = new List<string> { "Painting", "Sculptor", "Ornament" };
-        public static List<Error> AddValidate(Product product)
+        public string ConnectionString;
+        public List<Error> AddValidate(Product product)
         {
             List<Error> errors = new List<Error>();
+            DBAccess<Seller> sellerAccess = new DBAccess<Seller>(ConnectionString);
+            var seller = sellerAccess.Get(product.SellerId);
+            if (seller == null)
+                errors.Add(new Error { Field = "Seller", Message = ErrorMessage.InvalidSeller });
 
             if (!Categories.Contains(product.Category))
                 errors.Add(new Error { Field = "Category", Message = ErrorMessage.InvalidCategory });
-            if (!int.TryParse(product.StartingPrice, out int price))
+            if (!double.TryParse(product.StartingPrice, out double price))
                 errors.Add(new Error { Field = "StartingPrice", Message = ErrorMessage.InvalidPrice });
             
             if (!DateTime.TryParse(product.BidEndDate, out DateTime dateTime))
@@ -25,23 +30,25 @@ namespace SellerApp
             
             if (string.IsNullOrEmpty(product.ProductName))
                 errors.Add(new Error { Field = "ProductName", Message = ErrorMessage.EmptyProduct });
-            else if (product.ProductName.Length > 5)
+            else if (product.ProductName.Length < 5)
                 errors.Add(new Error { Field = "ProductName", Message = ErrorMessage.MinProductLength });
-            else if (product.ProductName.Length < 30)
+            else if (product.ProductName.Length > 30)
                 errors.Add(new Error { Field = "ProductName", Message = ErrorMessage.MaxProductLength });
 
             return errors;
         }
-        public static List<Error> DeleteValidate(Product product)
+        public List<Error> DeleteValidate(Product product)
         {
             List<Error> errors = new List<Error>();
             DateTime.TryParse(product.BidEndDate, out DateTime dateTime);
             
-            if (DateTime.Now < dateTime)
+            if (DateTime.Now > dateTime)
                 errors.Add(new Error { Field = "BidEndDate", Message = ErrorMessage.CannotDeleteBid });
 
-            DBAccess dBAccess = new DBAccess("Product");
-            
+            DBAccess<ProductBid> dbAccess = new DBAccess<ProductBid>(ConnectionString);
+            ProductBid bid = dbAccess.Get(product.Id, "ProductId");
+            if (bid != null)
+                errors.Add(new Error { Field = "Product", Message = ErrorMessage.CannotDeleteProduct });
 
             return errors;
         }

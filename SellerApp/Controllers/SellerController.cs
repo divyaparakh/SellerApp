@@ -11,12 +11,18 @@ namespace SellerApp.Controllers
     [ApiController]
     public class SellerController : ControllerBase
     {
+        IDBAccess<Seller> dbAccess;
+        public SellerController(IDBAccess<Seller> dbAccess)
+        {
+            this.dbAccess = dbAccess;
+        }
+
+        
         [HttpGet]
         public JsonResult Get()
         {
-            DBAccess dBAccess = new DBAccess("Seller");
-            var data = dBAccess.GetAll<Seller>();
-            return new JsonResult(new Response<List<Seller>> { Code = HttpStatusCode.OK,Message = "Success",Data = data });
+            var data = dbAccess.GetAll();
+            return new JsonResult(new Response<List<Seller>> { Code = HttpStatusCode.OK, Message = "Success", Data = data });
         }
     }
 }

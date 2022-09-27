@@ -18,6 +18,6 @@ namespace DataAccess.Models
         public string Category { get; set; }
         public string StartingPrice { get; set; }
         public string BidEndDate { get; set; }
-
+        public ObjectId SellerId { get; set; }
     }
 }

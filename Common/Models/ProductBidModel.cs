@@ -1,14 +1,8 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.IdGenerators;
-
-namespace DataAccess.Models
+﻿namespace Common.Models
 {
-    public class ProductBid
+    public class ProductBidModel
     {
-        [BsonId(IdGenerator = typeof(ObjectIdGenerator))]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public ObjectId Id { get; set; }
+        public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
@@ -17,7 +11,7 @@ namespace DataAccess.Models
         public string Pin { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public ObjectId ProductId { get; set; }
+        public string ProductId { get; set; }
         public string BidAmount { get; set; }
     }
 }

@@ -1,17 +1,21 @@
-﻿using MongoDB.Driver;
-using System;
+﻿using DataAccess.Models;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DataAccess.DB
 {
-    public interface IDBAccess
+    public interface IDBAccess<T>
     {
-        public IMongoCollection<T> Context<T>();
-        public T Get<T>(string Id);
-        public List<T> GetAll<T>();
-        public void Insert<T>(T obj);
-        public void Update<T>(T obj, string Prop = "Id");
-        public void Delete<T>(string Id, string Prop = "Id");
+        T Get(object Id, string Prop = "Id");
+        T Get(ObjectId Id);
+        List<T> GetAll();
+        List<T> GetAll(object Id, string Prop = "Id");
+        IMongoQueryable GetAllQueryable();
+        IMongoQueryable GetAllQueryable(object Id, string Prop = "Id");
+        void Insert(T obj);
+        void Update(T obj, string Prop = "Id");
+        void Delete(object Id, string Prop = "Id");
     }
 }

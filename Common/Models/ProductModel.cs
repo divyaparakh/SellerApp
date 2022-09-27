@@ -1,7 +1,6 @@
-﻿
-namespace SellerApp.Models
+﻿namespace Common.Models
 {
-    public class Product
+    public class ProductModel
     {
         public string Id { get; set; }
         public string ProductName { get; set; }
@@ -10,6 +9,6 @@ namespace SellerApp.Models
         public string Category { get; set; }
         public string StartingPrice { get; set; }
         public string BidEndDate { get; set; }
-
+        public string SellerId { get; set; }
     }
 }

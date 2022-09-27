@@ -1,54 +1,78 @@
-﻿using MongoDB.Driver;
-using DataAccess.Models;
+﻿using DataAccess.Models;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using System.Collections.Generic;
-
 namespace DataAccess.DB
 {
-    public class DBAccess : IDBAccess
+    public class DBAccess<T> : IDBAccess<T>
     {
-        private const string ConnectionString = "mongodb://localhost:27017";
+        //private const string ConnectionString = "mongodb://localhost:27017";
         private const string DBName = "Usecase";
-
         private MongoClient Client;
-        private IMongoClient Client1;
-        public IMongoDatabase db;
-        private string CollectionName { get; set; }
-        public DBAccess(IMongoClient Client1, string CollectionName)
-        {
-            this.Client1 = Client1;
-            db = Client1.GetDatabase(DBName);
-            this.CollectionName = CollectionName;
-        }
-        public DBAccess(string CollectionName)
+        private IMongoDatabase db;
+        public DBAccess(string ConnectionString)
         {
             Client = new MongoClient(ConnectionString);
             db = Client.GetDatabase(DBName);
-            this.CollectionName = CollectionName;
         }
-        public IMongoCollection<T> Context<T>()
+        private string GetCollectionName()
         {
-            return db.GetCollection<T>(CollectionName);            
+            if (typeof(T).Name == "Seller")
+                return "Seller";
+            else if (typeof(T).Name == "Product")
+                return "Product";
+            else if (typeof(T).Name == "ProductBid")
+                return "ProductBid";
+            else
+                return "";
         }
-        public T Get<T>(string Id)
+
+        private IMongoCollection<T> Context()
         {
-            return Context<T>().Find(Id).FirstOrDefault();
+            return db.GetCollection<T>(GetCollectionName());
         }
-        public List<T> GetAll<T>()
+        public T Get(object Id, string Prop = "Id")
         {
-            return Context<T>().AsQueryable<T>().ToList();
+            var filter = Builders<T>.Filter.Eq(Prop, Id);
+            return Context().Find(filter).FirstOrDefault();
         }
-        public async void Insert<T>(T obj)
+        public T Get(ObjectId Id)
         {
-            await Context<T>().InsertOneAsync(obj);            
+            var filter = Builders<T>.Filter.Eq("Id", Id);
+            return Context().Find(filter).FirstOrDefault();
         }
-        public async void Update<T>(T obj,string Prop = "Id")
+        public List<T> GetAll()
+        {
+            return Context().AsQueryable().ToList();
+        }
+        public IMongoQueryable GetAllQueryable()
+        {
+            return Context().AsQueryable();
+        }
+        public IMongoQueryable GetAllQueryable(object Id, string Prop = "Id")
+        {
+            return Context().AsQueryable().Where(x=>x.GetType().GetProperty(Prop).GetValue(x) == Id);
+        }
+        public List<T> GetAll(object Id, string Prop = "Id")
+        {
+            var filter = Builders<T>.Filter.Eq(Prop, Id);
+            return Context().Find(filter).ToList();
+        }
+        public async void Insert(T obj)
+        {
+            await Context().InsertOneAsync(obj);
+        }
+        public async void Update(T obj, string Prop = "Id")
         {
             object val = obj.GetType().GetProperty(Prop).GetValue(obj, null);
-            await Context<T>().ReplaceOneAsync(x=> x.GetType().GetProperty(Prop).GetValue(x) == val, obj, new ReplaceOptions { IsUpsert = true });
+            var filter = Builders<T>.Filter.Eq(Prop, val);
+            await Context().ReplaceOneAsync(filter, obj, new ReplaceOptions { IsUpsert = true });
         }
-        public async void Delete<T>(string Id, string Prop = "Id")
+        public async void Delete(object Id, string Prop = "Id")
         {
-            await Context<T>().DeleteOneAsync<T>(x => x.GetType().GetProperty(Prop).GetValue(x).ToString() == Id);
+            var filter = Builders<T>.Filter.Eq(Prop, Id);
+            await Context().DeleteOneAsync(filter);
         }
     }
 }

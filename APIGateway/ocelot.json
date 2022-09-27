@@ -22,7 +22,7 @@
         }
       ],
       "UpstreamPathTemplate": "/product",
-      "UpstreamHttpMethod": [ "GET"]
+      "UpstreamHttpMethod": [ "GET" ]
     },
     {
       "DownstreamPathTemplate": "/api/product/add",
@@ -33,8 +33,56 @@
           "Port": "6766"
         }
       ],
-      "UpstreamPathTemplate": "/product/add",
+      "UpstreamPathTemplate": "/seller/add-product",
       "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ProductBid/GetAll",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "6766"
+        }
+      ],
+      "UpstreamPathTemplate": "/seller/show-bids",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Product/delete",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "6766"
+        }
+      ],
+      "UpstreamPathTemplate": "/seller/delete",
+      "UpstreamHttpMethod": [ "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Productbid/add",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "18168"
+        }
+      ],
+      "UpstreamPathTemplate": "/buyer/place-bid",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Productbid/update",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "18168"
+        }
+      ],
+      "UpstreamPathTemplate": "/buyer/update-bid",
+      "UpstreamHttpMethod": [ "PUT" ]
     }
   ]
 }
