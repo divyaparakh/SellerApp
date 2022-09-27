@@ -18,38 +18,12 @@ namespace BuyerApp.Controllers
     public class ProductBidController : Controller
     {
         IDBAccess<ProductBid> dbPBAccess;
-        IDBAccess<Product> dbPAccess;
         IConfiguration configuration;
-        public ProductBidController(IDBAccess<ProductBid> access, IDBAccess<Product> dbPAccess, IConfiguration configuration)
+        public ProductBidController(IDBAccess<ProductBid> access,  IConfiguration configuration)
         {
             dbPBAccess = access;
-            this.dbPAccess = dbPAccess;
             this.configuration = configuration;
-        }
-        [HttpGet("GetAll")]
-        public JsonResult GetAll(ProductBidModel productBidModel)
-        {
-
-            var product = (from p in dbPAccess.GetAll()
-                           join pb in dbPBAccess.GetAll() on p.Id equals pb.ProductId
-                           where !string.IsNullOrEmpty(productBidModel.Id) ? p.Id == new ObjectId(productBidModel.Id) : true
-                           select new
-                           {
-                               p.ShortDescription,
-                               p.DetailedDescription,
-                               p.Category,
-                               p.StartingPrice,
-                               p.BidEndDate,
-                               Name = pb.FirstName + " " + pb.LastName,
-                               Address = pb.Address + " " + pb.City + " " + pb.State + " " + pb.Pin,
-                               pb.BidAmount,
-                               pb.Email,
-                               pb.Phone
-                           }).OrderByDescending(x => x.BidAmount).ToList();
-
-            return new JsonResult(new Response<object> { Code = HttpStatusCode.OK, Message = "Success", Data = product });
-        }
-
+        }        
         [HttpPost("Add")]
         public JsonResult Add(ProductBidModel productBidModel)
         {

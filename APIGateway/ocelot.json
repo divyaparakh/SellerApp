@@ -13,6 +13,18 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
+      "DownstreamPathTemplate": "/api/seller/add",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "6766"
+        }
+      ],
+      "UpstreamPathTemplate": "/seller/Add",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/product/getall",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -37,7 +49,7 @@
       "UpstreamHttpMethod": [ "POST" ]
     },
     {
-      "DownstreamPathTemplate": "/api/ProductBid/GetAll",
+      "DownstreamPathTemplate": "/api/seller/GetAll",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

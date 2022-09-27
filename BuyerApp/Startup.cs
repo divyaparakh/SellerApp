@@ -30,7 +30,13 @@ namespace BuyerApp
             string connection = Configuration.GetConnectionString("MongoDB");
             services.Add(new ServiceDescriptor(typeof(IDBAccess<ProductBid>), new DBAccess<ProductBid>(connection)));
             services.Add(new ServiceDescriptor(typeof(IDBAccess<Product>), new DBAccess<Product>(connection)));
+            string cors = Configuration.GetValue<string>("Cors");
             services.AddControllers();
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin();
+            }));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +52,8 @@ namespace BuyerApp
             app.UseRouting();
 
             app.UseAuthorization();
+            
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

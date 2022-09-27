@@ -23,8 +23,14 @@ namespace SellerApp
             string connection = Configuration.GetConnectionString("MongoDB");
             //singleton implementation
             services.Add(new ServiceDescriptor(typeof(IDBAccess<Seller>), new DBAccess<Seller>(connection)));
+            services.Add(new ServiceDescriptor(typeof(IDBAccess<ProductBid>), new DBAccess<ProductBid>(connection)));
             services.Add(new ServiceDescriptor(typeof(IDBAccess<Product>), new DBAccess<Product>(connection)));
+            string cors = Configuration.GetValue<string>("Cors");            
             services.AddControllers();
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +44,8 @@ namespace SellerApp
             app.UseRouting();
 
             app.UseAuthorization();
+            
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
