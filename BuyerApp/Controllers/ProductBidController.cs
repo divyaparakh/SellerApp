@@ -10,6 +10,7 @@ using System.Linq;
 using MongoDB.Bson;
 using Common.Models;
 using BuyerApp.Validation;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BuyerApp.Controllers
 {
@@ -23,7 +24,9 @@ namespace BuyerApp.Controllers
         {
             dbPBAccess = access;
             this.configuration = configuration;
-        }        
+        }
+        
+        [Authorize]
         [HttpPost("Add")]
         public JsonResult Add(ProductBidModel productBidModel)
         {
@@ -67,6 +70,7 @@ namespace BuyerApp.Controllers
             };
         }
 
+        [Authorize]
         [HttpPut("Update")]
         public JsonResult Update(ProductBidModel productBidModel)
         {

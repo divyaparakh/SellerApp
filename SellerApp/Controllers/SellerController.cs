@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SellerApp.Controllers
 {
@@ -31,6 +32,7 @@ namespace SellerApp.Controllers
             return new JsonResult(new Response<List<Seller>> { Code = HttpStatusCode.OK, Message = "Success", Data = data });
         }
         [HttpPost("Add")]
+        [Authorize]
         public JsonResult Add(Seller seller)
         {
             try
@@ -51,6 +53,7 @@ namespace SellerApp.Controllers
             }
         }
         [HttpGet("GetAll")]
+        [AllowAnonymous]
         public JsonResult GetAll()
         {
             var product = (from p in dbPAccess.GetAll()
@@ -65,7 +68,7 @@ namespace SellerApp.Controllers
                                Bids = dbPBAccess.GetAll(p.Id, "ProductId").OrderByDescending(x => x.BidAmount).ToList()
                            }).ToList();
 
-            return new JsonResult(new Response<object> { Code = HttpStatusCode.OK, Message = "Success", Data = product });
+            return new JsonResult(new Response<object> { Code = HttpStatusCode.OK, Message = "Success", Data = product.Where(x => x.Bids.Count() > 0).ToList() });
         }
 
     }

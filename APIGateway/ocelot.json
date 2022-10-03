@@ -95,6 +95,18 @@
       ],
       "UpstreamPathTemplate": "/buyer/update-bid",
       "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "45241"
+        }
+      ],
+      "UpstreamPathTemplate": "/auth/user",
+      "UpstreamHttpMethod": [ "POST" ]
     }
   ]
 }

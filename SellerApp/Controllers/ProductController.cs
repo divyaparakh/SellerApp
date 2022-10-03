@@ -8,6 +8,7 @@ using System.Net;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using Common.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SellerApp.Controllers
 {
@@ -23,11 +24,14 @@ namespace SellerApp.Controllers
             this.configuration = configuration;
         }
         [HttpGet("GetAll")]
+        [AllowAnonymous]
         public JsonResult GetAll()
         {
             var data = dbAccess.GetAll();
             return new JsonResult(new Response<List<Product>> { Code = HttpStatusCode.OK, Message = "Success", Data = data });
         }
+
+        [Authorize]
         [HttpPost("Add")]
         public JsonResult Add(ProductModel productModel)
         {
@@ -69,6 +73,7 @@ namespace SellerApp.Controllers
         }
 
         [HttpDelete("Delete")]
+        [Authorize]
         public JsonResult Delete(ProductModel productModel)
         {
             Product product = dbAccess.Get(new ObjectId(productModel.Id));

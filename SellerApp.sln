@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{CF435DAB-E7F4-4C42-BB3E-95E3D5FBE273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyerApp", "BuyerApp\BuyerApp.csproj", "{7ED3BA5B-A948-4FAA-9D6C-EDFFD1891811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuyerApp", "BuyerApp\BuyerApp.csproj", "{7ED3BA5B-A948-4FAA-9D6C-EDFFD1891811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth", "Auth\Auth.csproj", "{1E4EB637-2F6A-44BD-9635-12E4D5060D1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7ED3BA5B-A948-4FAA-9D6C-EDFFD1891811}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ED3BA5B-A948-4FAA-9D6C-EDFFD1891811}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ED3BA5B-A948-4FAA-9D6C-EDFFD1891811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E4EB637-2F6A-44BD-9635-12E4D5060D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E4EB637-2F6A-44BD-9635-12E4D5060D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E4EB637-2F6A-44BD-9635-12E4D5060D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E4EB637-2F6A-44BD-9635-12E4D5060D1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
