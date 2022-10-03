@@ -1,5 +1,4 @@
 ﻿using Common;
-using DataAnnotationsExtensions;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.IdGenerators;
@@ -20,12 +19,8 @@ namespace DataAccess.Models
         public string State { get; set; }
         public string Pin { get; set; }
         [BsonRequired]
-        [Min(10, ErrorMessage = ErrorMessage.InvalidMobile)]
-        [Max(10, ErrorMessage = ErrorMessage.InvalidMobile)]
-        [Numeric]
         public string Phone { get; set; }
         [BsonRequired]
-        [Email(ErrorMessage = ErrorMessage.InvalidEmail)]
         public string Email { get; set; }
     }
 }
