@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using System;
 using System.Collections.Generic;
 using System.Security.Authentication;
 
@@ -10,13 +11,15 @@ namespace DataAccess.DB
     public class DBAccess<T> : IDBAccess<T>
     {
         //private const string ConnectionString = "mongodb://localhost:27017";
-        private const string DBName = "Usecase";
+        private const string DBName = "MongoServer";
         private MongoClient Client;
         private IMongoDatabase db;
         public DBAccess(string ConnectionString)
         {
-            Client = new MongoClient(ConnectionString);
-            //Client.Settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+            MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(ConnectionString));
+            settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            var Client = new MongoClient(settings);
             db = Client.GetDatabase(DBName);
         }
         private string GetCollectionName()
@@ -55,7 +58,7 @@ namespace DataAccess.DB
         }
         public IMongoQueryable GetAllQueryable(object Id, string Prop = "Id")
         {
-            return Context().AsQueryable().Where(x=>x.GetType().GetProperty(Prop).GetValue(x) == Id);
+            return Context().AsQueryable().Where(x => x.GetType().GetProperty(Prop).GetValue(x) == Id);
         }
         public List<T> GetAll(object Id, string Prop = "Id")
         {
