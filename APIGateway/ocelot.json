@@ -2,11 +2,11 @@
   "ReRoutes": [
     {
       "DownstreamPathTemplate": "/api/seller",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "6766"
+          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/seller",
@@ -14,11 +14,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/seller/add",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "6766"
+          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/seller/Add",
@@ -26,11 +26,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/product/getall",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "6766"
+          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/product",
@@ -38,11 +38,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/product/add",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "6766"
+          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/seller/add-product",
@@ -50,11 +50,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/seller/GetAll",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "6766"
+          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/seller/show-bids",
@@ -62,11 +62,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Product/delete",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "6766"
+          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/seller/delete",
@@ -74,11 +74,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Productbid/add",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "18168"
+          "Host": "https://buyerapp20221003103132.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/buyer/place-bid",
@@ -86,11 +86,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Productbid/update",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "18168"
+          "Host": "https://buyerapp20221003103132.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/buyer/update-bid",
@@ -101,8 +101,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "45241"
+          "Host": "https://authservice20221003101403.azurewebsites.net",
+          "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/auth/user",
@@ -110,3 +110,115 @@
     }
   ]
 }
+//{
+//  "ReRoutes": [
+//    {
+//      "DownstreamPathTemplate": "/api/seller",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "6766"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/seller",
+//      "UpstreamHttpMethod": [ "GET" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/seller/add",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "6766"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/seller/Add",
+//      "UpstreamHttpMethod": [ "POST" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/product/getall",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "6766"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/product",
+//      "UpstreamHttpMethod": [ "GET" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/product/add",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "6766"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/seller/add-product",
+//      "UpstreamHttpMethod": [ "POST" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/seller/GetAll",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "6766"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/seller/show-bids",
+//      "UpstreamHttpMethod": [ "GET" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/Product/delete",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "6766"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/seller/delete",
+//      "UpstreamHttpMethod": [ "DELETE" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/Productbid/add",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "18168"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/buyer/place-bid",
+//      "UpstreamHttpMethod": [ "POST" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/Productbid/update",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "18168"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/buyer/update-bid",
+//      "UpstreamHttpMethod": [ "PUT" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/auth/login",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "45241"
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/auth/user",
+//      "UpstreamHttpMethod": [ "POST" ]
+//    }
+//  ]
+//}
