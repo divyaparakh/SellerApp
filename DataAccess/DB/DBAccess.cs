@@ -3,6 +3,8 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System.Collections.Generic;
+using System.Security.Authentication;
+
 namespace DataAccess.DB
 {
     public class DBAccess<T> : IDBAccess<T>
@@ -14,6 +16,7 @@ namespace DataAccess.DB
         public DBAccess(string ConnectionString)
         {
             Client = new MongoClient(ConnectionString);
+            Client.Settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
             db = Client.GetDatabase(DBName);
         }
         private string GetCollectionName()
