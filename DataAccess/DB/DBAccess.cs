@@ -16,7 +16,7 @@ namespace DataAccess.DB
         public DBAccess(string ConnectionString)
         {
             Client = new MongoClient(ConnectionString);
-            Client.Settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            //Client.Settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
             db = Client.GetDatabase(DBName);
         }
         private string GetCollectionName()
