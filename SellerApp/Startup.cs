@@ -28,7 +28,6 @@ namespace SellerApp
             services.Add(new ServiceDescriptor(typeof(IDBAccess<Seller>), new DBAccess<Seller>(connection)));
             services.Add(new ServiceDescriptor(typeof(IDBAccess<ProductBid>), new DBAccess<ProductBid>(connection)));
             services.Add(new ServiceDescriptor(typeof(IDBAccess<Product>), new DBAccess<Product>(connection)));
-            string cors = Configuration.GetValue<string>("Cors");
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -41,7 +40,6 @@ namespace SellerApp
                     ValidAudience = Configuration["Jwt:Aud1"],
                     ValidIssuer = Configuration["Jwt:Issuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])),
-                    //ValidateIssuerSigningKey = false
                 };
             });
             services.AddControllers();

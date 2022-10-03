@@ -25,7 +25,7 @@ namespace BuyerApp
             string connection = Configuration.GetConnectionString("MongoDB");
             services.Add(new ServiceDescriptor(typeof(IDBAccess<ProductBid>), new DBAccess<ProductBid>(connection)));
             services.Add(new ServiceDescriptor(typeof(IDBAccess<Product>), new DBAccess<Product>(connection)));
-            string cors = Configuration.GetValue<string>("Cors");
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.RequireHttpsMetadata = false;
