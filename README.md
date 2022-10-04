@@ -8,9 +8,9 @@
 
 # 1.SellerApp 
 
-APIEndPoint : **https://localhost:5002**   **https://eauctionapplicationseller.azurewebsites.net**
+APIEndPoint : **https://sellerapp20221003120442.azurewebsites.net**
 
-GateWayEndPoint : **https://localhost:5000/e-auction**  **https://eauctionapplicationoceletapigateway.azurewebsites.net/e-auction**
+GateWayEndPoint : **https://apigateway20221003120814.azurewebsites.net/seller/show-bids**
 
 Here we are used **Seller** and **Products** container in mongo db with partition key was  **SellerId**
 
@@ -47,9 +47,9 @@ here the sample mongodb document
 
 # 2.BuyerApp
 
-APIEndPoint : **https://localhost:5004**  **https://eauctionapplicationbuyer.azurewebsites.net**
+APIEndPoint : **https://buyerapp20221003103132.azurewebsites.net**
 
-GateWayEndPoint : **https://localhost:5000/e-auction**  **https://eauctionapplicationoceletapigateway.azurewebsites.net/e-auction**
+GateWayEndPoint : **https://apigateway20221003120814.azurewebsites.net/buyer/place-bid**
 
 Here we are used **ProductBid** container in mongo db with partition key was  **./ProductId** ,
 
@@ -75,9 +75,9 @@ here the sample mongo document
 
 # 3.Auth
 
-APIEndPoint : **https://localhost:5006**  **https://eauctionapplicationauth.azurewebsites.net**
+APIEndPoint : **https://authservice20221003101403.azurewebsites.net**
 
-GateWayEndPoint : **https://localhost:5000/e-auction**  **https://eauctionapplicationoceletapigateway.azurewebsites.net/e-auction**
+GateWayEndPoint : **https://apigateway20221003120814.azurewebsites.net/auth/user**
 
 here we have a post login call to genrate jwt token, this is payload
 
@@ -100,7 +100,7 @@ Response
 
 we did ocelot configuration json for all exposed endpoints with downstramendpoints are buyer and seller and auth
 
-GateWayEndPoint : **https://localhost:5000**  **https://eauctionapplicationoceletapigateway.azurewebsites.net/**
+GateWayEndPoint : **https://apigateway20221003120814.azurewebsites.net**
 
 
 
@@ -108,4 +108,4 @@ GateWayEndPoint : **https://localhost:5000**  **https://eauctionapplicationocele
 
 we are deployed react application as static webapp in azure.
 
-React Portal urls : **https://localhost:4200**  **https://white-island-03fe90310.1.azurestaticapps.net/**
+React Portal urls : **https://webportalreact.azurewebsites.net/**
