@@ -5,7 +5,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Host": "sellerapp20221003120442.azurewebsites.net",
           "Port": "443"
         }
       ],
@@ -17,7 +17,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Host": "sellerapp20221003120442.azurewebsites.net",
           "Port": "443"
         }
       ],
@@ -53,7 +53,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Host": "sellerapp20221003120442.azurewebsites.net",
           "Port": "443"
         }
       ],
@@ -65,7 +65,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "https://sellerapp20221003120442.azurewebsites.net",
+          "Host": "sellerapp20221003120442.azurewebsites.net",
           "Port": "443"
         }
       ],
@@ -77,7 +77,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "https://buyerapp20221003103132.azurewebsites.net",
+          "Host": "buyerapp20221003103132.azurewebsites.net",
           "Port": "443"
         }
       ],
@@ -89,7 +89,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "https://buyerapp20221003103132.azurewebsites.net",
+          "Host": "buyerapp20221003103132.azurewebsites.net",
           "Port": "443"
         }
       ],
@@ -98,17 +98,20 @@
     },
     {
       "DownstreamPathTemplate": "/api/auth/login",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "https://authservice20221003101403.azurewebsites.net",
+          "Host": "authservice20221003101403.azurewebsites.net",
           "Port": "443"
         }
       ],
       "UpstreamPathTemplate": "/auth/user",
       "UpstreamHttpMethod": [ "POST" ]
     }
-  ]
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://apigateway20221003120814.azurewebsites.net"
+  }
 }
 //{
 //  "ReRoutes": [
