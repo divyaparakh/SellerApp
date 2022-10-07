@@ -7,7 +7,7 @@
     6.Web Portal (React)
 
 # 1.Architecture
-![image](https://user-images.githubusercontent.com/31089416/194471303-fd5f7639-3a0f-48cd-b0ec-ae22e31568bc.png)
+![image](https://user-images.githubusercontent.com/31089416/194472821-f5975182-5eb3-45ac-913b-7840c263cdc5.png)
 
 # 2.SellerApp 
 
