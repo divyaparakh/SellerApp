@@ -1,14 +1,15 @@
 # E-Auction Application
-    1.SellerApp
-    2.BuyerApp
-    3.Auth
-    4.ApiGateWay
-    5.Web Portal (React)
+    1.Architecture
+    2.SellerApp
+    3.BuyerApp
+    4.Auth
+    5.ApiGateWay
+    6.Web Portal (React)
 
-# Architecture
+# 1.Architecture
 ![image](https://user-images.githubusercontent.com/31089416/194471303-fd5f7639-3a0f-48cd-b0ec-ae22e31568bc.png)
 
-# 1.SellerApp 
+# 2.SellerApp 
 
 APIEndPoint : **https://sellerapp20221003120442.azurewebsites.net**
 
@@ -47,7 +48,7 @@ here the sample mongodb document
   }
 }
 
-# 2.BuyerApp
+# 3.BuyerApp
 
 APIEndPoint : **https://buyerapp20221003103132.azurewebsites.net**
 
@@ -75,7 +76,7 @@ here the sample mongo document
   "BidAmount": "2222"
 }
 
-# 3.Auth
+# 4.Auth
 
 APIEndPoint : **https://authservice20221003101403.azurewebsites.net**
 
@@ -98,7 +99,7 @@ Response
     "data": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLnNlbGxlci5jb20sYXBpLmJ1eWVyLmNvbSIsImFwaS5zZWxsZXIuY29tLGFwaS5idXllci5jb20iXSwiaXNzIjoiYXBpLmF1dGguY29tIiwidW5pcXVlX25hbWUiOiJ1c2VybmFtZSIsImV4cCI6MTY2NDUxNzM4MX0.2a-xxtUgk9v2SBiz3lOCovAip0D7or64mnLwSMORZkc"
 }
 
-# 4. APIGateway
+# 5. APIGateway
 
 we did ocelot configuration json for all exposed endpoints with downstramendpoints are buyer and seller and auth
 
@@ -106,7 +107,7 @@ GateWayEndPoint : **https://apigateway20221003120814.azurewebsites.net**
 
 
 
-# 5. Web Portal(React)
+# 6. Web Portal(React)
 
 we are deployed react application as static webapp in azure.
 
