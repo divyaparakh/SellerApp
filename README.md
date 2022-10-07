@@ -5,6 +5,8 @@
     4.ApiGateWay
     5.Web Portal (React)
 
+# Architecture
+![image](https://user-images.githubusercontent.com/31089416/194471303-fd5f7639-3a0f-48cd-b0ec-ae22e31568bc.png)
 
 # 1.SellerApp 
 
